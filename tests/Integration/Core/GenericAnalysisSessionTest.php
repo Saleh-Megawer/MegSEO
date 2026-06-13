@@ -188,13 +188,5 @@ test('context data is passed to checks unchanged', function () {
  */
 function createEngine(): MegSEO\Core\Engine
 {
-    $registry = new MegSEO\Pipeline\CheckRegistry();
-    $runner = new MegSEO\Pipeline\PipelineRunner();
-    $pipeline = new MegSEO\Pipeline\CheckPipeline($registry, $runner);
-    $plan = new MegSEO\Pipeline\SequentialExecutionPlan($pipeline);
-    $resultNormalizer = new MegSEO\Result\ResultNormalizer();
-    $scoreAggregator = new MegSEO\Result\ScoreAggregator();
-    $aggregator = new MegSEO\Result\ResultAggregator($scoreAggregator, $resultNormalizer);
-
-    return new MegSEO\Core\Engine($plan, $aggregator, $registry);
+    return MegSEO\Core\Engine::make();
 }
