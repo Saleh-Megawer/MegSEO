@@ -26,7 +26,7 @@ return [
     |
     */
     'checks' => [
-        //
+        // MegSEO\Checks\Title\TitleCheck::class,
     ],
 
     /*

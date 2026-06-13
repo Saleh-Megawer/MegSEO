@@ -107,15 +107,15 @@
 
 ### Tests for User Story 2
 
-- [ ] T030 [P] [US2] Write unit tests for `EvaluateFocusKeywordPresence` rule in `tests/Unit/Checks/Title/Rules/EvaluateFocusKeywordPresenceTest.php`
-- [ ] T031 [P] [US2] Write unit tests for `EvaluateDuplicateTitleSupport` rule in `tests/Unit/Checks/Title/Rules/EvaluateDuplicateTitleSupportTest.php`
-- [ ] T032 [P] [US2] Write integration tests for keyword presence and duplicate-title scenarios through the MegSEO engine in `tests/Integration/Checks/Title/TitleCheckKeywordDuplicateTest.php`
+- [x] T030 [P] [US2] Write unit tests for `EvaluateFocusKeywordPresence` rule in `tests/Unit/Checks/Title/Rules/EvaluateFocusKeywordPresenceTest.php`
+- [x] T031 [P] [US2] Write unit tests for `EvaluateDuplicateTitleSupport` rule in `tests/Unit/Checks/Title/Rules/EvaluateDuplicateTitleSupportTest.php`
+- [x] T032 [P] [US2] Write integration tests for keyword presence and duplicate-title scenarios through the MegSEO engine in `tests/Integration/Checks/Title/TitleCheckKeywordDuplicateTest.php`
 
 ### Implementation for User Story 2
 
-- [ ] T033 [P] [US2] Implement `EvaluateFocusKeywordPresence` rule in `src/Checks/Title/Rules/EvaluateFocusKeywordPresence.php` — when keyword is supplied and absent from normalized title, produces an `AnalysisSuggestion` with confidence; when keyword is present, produces no finding; degrades safely when keyword is not supplied
-- [ ] T034 [P] [US2] Implement `EvaluateDuplicateTitleSupport` rule in `src/Checks/Title/Rules/EvaluateDuplicateTitleSupport.php` — when duplicate support data is available and the normalized title matches another page, produces a finding or metadata signal; degrades safely when support data is absent (no errors, no false findings)
-- [ ] T035 [US2] Update `TitleCheck` in `src/Checks/Title/TitleCheck.php` — integrate US2 rules (focus keyword, duplicate-title) into the fixed execution order after US1 rules
+- [x] T033 [P] [US2] Implement `EvaluateFocusKeywordPresence` rule in `src/Checks/Title/Rules/EvaluateFocusKeywordPresence.php` — when keyword is supplied and absent from normalized title, produces an `AnalysisSuggestion` with confidence; when keyword is present, produces no finding; degrades safely when keyword is not supplied
+- [x] T034 [P] [US2] Implement `EvaluateDuplicateTitleSupport` rule in `src/Checks/Title/Rules/EvaluateDuplicateTitleSupport.php` — when duplicate support data is available and the normalized title matches another page, produces a finding or metadata signal; degrades safely when support data is absent (no errors, no false findings)
+- [x] T035 [US2] Update `TitleCheck` in `src/Checks/Title/TitleCheck.php` — integrate US2 rules (focus keyword, duplicate-title) into the fixed execution order after US1 rules
 
 **Checkpoint**: User Stories 1 and 2 should both work independently — keyword guidance and duplicate support provide additional actionable findings
 
@@ -129,17 +129,17 @@
 
 ### Tests for User Story 3
 
-- [ ] T036 [P] [US3] Write unit tests for `TitleScoreContributionBuilder` in `tests/Unit/Checks/Title/ScoreContributionBuilderTest.php`
-- [ ] T037 [P] [US3] Write contract tests for deterministic repeated runs, stable identifiers, and metadata consistency in `tests/Contract/Checks/Title/DeterminismContractTest.php`
-- [ ] T038 [P] [US3] Write integration tests for Arabic and Unicode title scenarios in `tests/Integration/Checks/Title/ArabicUnicodeTest.php`
-- [ ] T039 [P] [US3] Write Laravel integration tests for Title Check registration, configuration, and consumption flow in `tests/Integration/Laravel/TitleCheckRegistrationTest.php`
+- [x] T036 [P] [US3] Write unit tests for `TitleScoreContributionBuilder` in `tests/Unit/Checks/Title/ScoreContributionBuilderTest.php`
+- [x] T037 [P] [US3] Write contract tests for deterministic repeated runs, stable identifiers, and metadata consistency in `tests/Contract/Checks/Title/DeterminismContractTest.php`
+- [x] T038 [P] [US3] Write integration tests for Arabic and Unicode title scenarios in `tests/Integration/Checks/Title/ArabicUnicodeTest.php`
+- [x] T039 [P] [US3] Write Laravel integration tests for Title Check registration, configuration, and consumption flow in `tests/Integration/Laravel/TitleCheckRegistrationTest.php`
 
 ### Implementation for User Story 3
 
-- [ ] T040 [US3] Implement `TitleScoreContributionBuilder` in `src/Checks/Title/Scoring/TitleScoreContributionBuilder.php` — assembles score contributions from rule outcomes with explicit rationale strings; maps rule findings to score impact values
-- [ ] T041 [US3] Update `TitleCheck` in `src/Checks/Title/TitleCheck.php` — integrate score contribution assembly, metadata packaging (`TitleCheckMetadata`), and ensure deterministic ordering of all outputs in the `CheckOutcome`
-- [ ] T042 [P] [US3] Implement `TitleCheckRegistration` in `src/Laravel/Support/TitleCheckRegistration.php` — thin adapter that resolves Laravel configuration values (thresholds, check class) and wires the Title Check into the existing MegSEO registration mechanism; contains no business logic
-- [ ] T043 [P] [US3] Add Title Check class to `config/megseo.php` default `'checks'` array and wire title threshold keys into `TitleLengthPolicy` construction at the Laravel integration boundary
+- [x] T040 [US3] Implement `TitleScoreContributionBuilder` in `src/Checks/Title/Scoring/TitleScoreContributionBuilder.php` — assembles score contributions from rule outcomes with explicit rationale strings; maps rule findings to score impact values
+- [x] T041 [US3] Update `TitleCheck` in `src/Checks/Title/TitleCheck.php` — integrate score contribution assembly, metadata packaging (`TitleCheckMetadata`), and ensure deterministic ordering of all outputs in the `CheckOutcome`
+- [x] T042 [P] [US3] Implement `TitleCheckRegistration` in `src/Laravel/Support/TitleCheckRegistration.php` — thin adapter that resolves Laravel configuration values (thresholds, check class) and wires the Title Check into the existing MegSEO registration mechanism; contains no business logic
+- [x] T043 [P] [US3] Add Title Check class to `config/megseo.php` default `'checks'` array and wire title threshold keys into `TitleLengthPolicy` construction at the Laravel integration boundary
 
 **Checkpoint**: All user stories should now be independently functional — the Title Check is complete, deterministic, and serves as the reference implementation
 
@@ -149,12 +149,12 @@
 
 **Purpose**: Documentation, edge-case validation, and final quality assurance for the Title Check feature
 
-- [ ] T044 [P] Update quickstart documentation in `specs/002-title-check/quickstart.md` with actual code examples and validated consumption patterns
-- [ ] T045 [P] Validate public contract documentation in `specs/002-title-check/contracts/` against implemented behavior
-- [ ] T046 Add edge-case regression tests — missing title with focus keyword, Arabic titles with duplicate support, empty keyword with valid title, zero-length boundaries — in `tests/Integration/Checks/Title/TitleCheckEdgeCasesTest.php`
-- [ ] T047 [P] Verify backwards compatibility — existing core engine behavior is unchanged after Title Check registration; no existing test regressions
-- [ ] T048 Run full feature-level API review and code cleanup across `src/Checks/Title/`
-- [ ] T049 Validate that the feature can serve as the reference implementation pattern: verify rule composition style, normalization pipeline, metadata structure, and confidence signaling are consistent and comprehensible
+- [x] T044 [P] Update quickstart documentation in `specs/002-title-check/quickstart.md` with actual code examples and validated consumption patterns
+- [x] T045 [P] Validate public contract documentation in `specs/002-title-check/contracts/` against implemented behavior
+- [x] T046 Add edge-case regression tests — missing title with focus keyword, Arabic titles with duplicate support, empty keyword with valid title, zero-length boundaries — in `tests/Integration/Checks/Title/TitleCheckEdgeCasesTest.php`
+- [x] T047 [P] Verify backwards compatibility — existing core engine behavior is unchanged after Title Check registration; no existing test regressions
+- [x] T048 Run full feature-level API review and code cleanup across `src/Checks/Title/`
+- [x] T049 Validate that the feature can serve as the reference implementation pattern: verify rule composition style, normalization pipeline, metadata structure, and confidence signaling are consistent and comprehensible
 
 ---
 
