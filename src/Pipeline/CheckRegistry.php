@@ -8,6 +8,16 @@ use MegSEO\Contracts\Check;
 use MegSEO\Contracts\RegistersChecks;
 use MegSEO\Support\OrderedChecks;
 
+/**
+ * Deterministic in-memory check registry.
+ *
+ * Maintains checks in registration order. Duplicate identifiers
+ * cause a {@see \MegSEO\Exceptions\DuplicateCheckIdentifierException}
+ * to be thrown.
+ *
+ * This registry is the primary extension point for adding checks
+ * to the analysis pipeline without modifying core engine behavior.
+ */
 final class CheckRegistry implements RegistersChecks
 {
     private OrderedChecks $checks;
@@ -31,5 +41,10 @@ final class CheckRegistry implements RegistersChecks
     public function count(): int
     {
         return $this->checks->count();
+    }
+
+    public function has(string $id): bool
+    {
+        return $this->checks->has($id);
     }
 }

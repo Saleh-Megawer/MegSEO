@@ -8,6 +8,7 @@ use MegSEO\Contracts\Check;
 use MegSEO\DTO\AnalysisContext;
 use MegSEO\DTO\CheckOutcome;
 use MegSEO\DTO\CheckReference;
+use MegSEO\Exceptions\DuplicateCheckIdentifierException;
 
 test('ImmutableMap stores and retrieves values', function () {
     $map = new ImmutableMap(['key' => 'value', 'count' => 42]);
@@ -81,16 +82,16 @@ test('OrderedChecks preserves insertion order', function () {
     expect($all[2]->ref()->id)->toBe('check.three');
 });
 
-test('OrderedChecks does not add duplicate check with same id', function () {
+test('OrderedChecks throws on duplicate check identifier', function () {
     $checks = new OrderedChecks();
 
     $check1 = createStubCheck('check.dupe');
     $check2 = createStubCheck('check.dupe');
 
     $checks->add($check1);
-    $checks->add($check2);
 
-    expect($checks->count())->toBe(1);
+    expect(fn () => $checks->add($check2))
+        ->toThrow(DuplicateCheckIdentifierException::class);
 });
 
 test('OrderedChecks can remove check by id', function () {

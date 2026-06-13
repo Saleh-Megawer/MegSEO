@@ -7,6 +7,7 @@ namespace MegSEO\Support;
 use Countable;
 use IteratorAggregate;
 use MegSEO\Contracts\Check;
+use MegSEO\Exceptions\DuplicateCheckIdentifierException;
 use Traversable;
 
 /**
@@ -23,12 +24,14 @@ final class OrderedChecks implements Countable, IteratorAggregate
     {
         $id = $check->ref()->id;
 
-        if (!isset($this->checks[$id])) {
-            $this->checks[$id] = [
-                'index' => $this->nextIndex++,
-                'check' => $check,
-            ];
+        if (isset($this->checks[$id])) {
+            throw new DuplicateCheckIdentifierException($check);
         }
+
+        $this->checks[$id] = [
+            'index' => $this->nextIndex++,
+            'check' => $check,
+        ];
     }
 
     public function remove(string $id): void

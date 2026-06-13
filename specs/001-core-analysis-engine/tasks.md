@@ -82,16 +82,16 @@
 
 ### Tests for User Story 2
 
-- [ ] T021 [P] [US2] Create contract tests for check registration and stable identifier behavior in `tests/Contract/CheckRegistrationContractTest.php`
-- [ ] T022 [P] [US2] Create integration tests for feature-style check extension flows in `tests/Integration/Core/ExtensionMechanismTest.php`
+- [x] T021 [P] [US2] Create contract tests for check registration and stable identifier behavior in `tests/Contract/CheckRegistrationContractTest.php`
+- [x] T022 [P] [US2] Create integration tests for feature-style check extension flows in `tests/Integration/Core/ExtensionMechanismTest.php`
 
 ### Implementation for User Story 2
 
-- [ ] T023 [P] [US2] Implement stable `Check` contract and registration interfaces in `src/Contracts/Check.php` and `src/Contracts/RegistersChecks.php`
-- [ ] T024 [P] [US2] Implement check result factory and context factory helpers in `src/Contracts/CheckResultFactory.php` and `src/Contracts/ContextFactory.php`
-- [ ] T025 [US2] Implement extension-oriented registration workflow in `src/Pipeline/CheckRegistry.php` and `src/DTO/CheckReference.php`
-- [ ] T026 [US2] Implement shared output contract adapter for downstream consumers in `src/Contracts/ArrayableResult.php`
-- [ ] T027 [US2] Document extension-safe stub check examples in `specs/001-core-analysis-engine/quickstart.md`
+- [x] T023 [P] [US2] Implement stable `Check` contract and registration interfaces in `src/Contracts/Check.php` and `src/Contracts/RegistersChecks.php`
+- [x] T024 [P] [US2] Implement check result factory and context factory helpers in `src/Contracts/CheckResultFactory.php` and `src/Contracts/ContextFactory.php`
+- [x] T025 [US2] Implement extension-oriented registration workflow in `src/Pipeline/CheckRegistry.php` and `src/DTO/CheckReference.php`
+- [x] T026 [US2] Implement shared output contract adapter for downstream consumers in `src/Contracts/ArrayableResult.php`
+- [x] T027 [US2] Document extension-safe stub check examples in `specs/001-core-analysis-engine/quickstart.md`
 
 **Checkpoint**: At this point, User Stories 1 and 2 should both work independently
 
@@ -105,17 +105,17 @@
 
 ### Tests for User Story 3
 
-- [ ] T028 [P] [US3] Create contract tests for result contract stability and execution policy semantics in `tests/Contract/ResultContractTest.php` and `tests/Contract/ExecutionPolicyContractTest.php`
-- [ ] T029 [P] [US3] Create Laravel integration tests for service provider, facade binding, and config-driven execution policy in `tests/Integration/Laravel/MegSEOServiceProviderTest.php`
+- [x] T028 [P] [US3] Create contract tests for result contract stability and execution policy semantics in `tests/Contract/ResultContractTest.php` and `tests/Contract/ExecutionPolicyContractTest.php`
+- [x] T029 [P] [US3] Create Laravel integration tests for service provider, facade binding, and config-driven execution policy in `tests/Integration/Laravel/MegSEOServiceProviderTest.php`
 
 ### Implementation for User Story 3
 
-- [ ] T030 [P] [US3] Implement execution policy contract and presets in `src/Contracts/ExecutionPolicy.php`, `src/Policy/FailFastExecutionPolicy.php`, `src/Policy/IsolateFailuresExecutionPolicy.php`, and `src/Policy/StandardExecutionPolicies.php`
-- [ ] T031 [US3] Integrate execution policy decisions into pipeline and aggregation flow in `src/Pipeline/PipelineRunner.php` and `src/Result/ResultAggregator.php`
-- [ ] T032 [P] [US3] Implement Laravel check registration bridge in `src/Laravel/Support/LaravelCheckRegistration.php`
-- [ ] T033 [P] [US3] Implement Laravel service provider and facade in `src/Laravel/Providers/MegSEOServiceProvider.php` and `src/Laravel/Facades/MegSEO.php`
-- [ ] T034 [P] [US3] Implement artisan analysis command in `src/Laravel/Console/AnalyzeContextCommand.php`
-- [ ] T035 [US3] Finalize stable `AnalysisResult` accessors and isolated failure metadata behavior in `src/DTO/AnalysisResult.php`
+- [x] T030 [P] [US3] Implement execution policy contract and presets in `src/Contracts/ExecutionPolicy.php`, `src/Policy/FailFastExecutionPolicy.php`, `src/Policy/IsolateFailuresExecutionPolicy.php`, and `src/Policy/StandardExecutionPolicies.php`
+- [x] T031 [US3] Integrate execution policy decisions into pipeline and aggregation flow in `src/Pipeline/PipelineRunner.php` and `src/Result/ResultAggregator.php`
+- [x] T032 [P] [US3] Implement Laravel check registration bridge in `src/Laravel/Support/LaravelCheckRegistration.php`
+- [x] T033 [P] [US3] Implement Laravel service provider and facade in `src/Laravel/Providers/MegSEOServiceProvider.php` and `src/Laravel/Facades/MegSEO.php`
+- [x] T034 [P] [US3] Implement artisan analysis command in `src/Laravel/Console/AnalyzeContextCommand.php`
+- [x] T035 [US3] Finalize stable `AnalysisResult` accessors and isolated failure metadata behavior in `src/DTO/AnalysisResult.php`
 
 **Checkpoint**: All user stories should now be independently functional
 

@@ -144,6 +144,16 @@ test('RegistersChecks contract supports registration and enumeration', function 
         {
             return count($this->checks);
         }
+
+        public function has(string $id): bool
+        {
+            foreach ($this->checks as $check) {
+                if ($check->ref()->id === $id) {
+                    return true;
+                }
+            }
+            return false;
+        }
     };
 
     $check = new class implements Check

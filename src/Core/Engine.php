@@ -7,6 +7,7 @@ namespace MegSEO\Core;
 use MegSEO\Contracts\AnalyzesContexts;
 use MegSEO\Contracts\AggregatesCheckResults;
 use MegSEO\Contracts\Check;
+use MegSEO\Contracts\ExecutionPolicy;
 use MegSEO\Contracts\Pipeline;
 use MegSEO\Contracts\RegistersChecks;
 use MegSEO\DTO\AnalysisContext;
@@ -15,6 +16,7 @@ use MegSEO\Pipeline\CheckPipeline;
 use MegSEO\Pipeline\CheckRegistry;
 use MegSEO\Pipeline\PipelineRunner;
 use MegSEO\Pipeline\SequentialExecutionPlan;
+use MegSEO\Policy\IsolateFailuresExecutionPolicy;
 use MegSEO\Result\ResultAggregator;
 use MegSEO\Result\ResultNormalizer;
 use MegSEO\Result\ScoreAggregator;
@@ -27,13 +29,18 @@ final class Engine implements AnalyzesContexts, RegistersChecks
         private readonly RegistersChecks $registry,
     ) {}
 
-    public static function make(): self
+    public static function make(?ExecutionPolicy $policy = null): self
     {
         $registry = new CheckRegistry();
 
         return new self(
             pipeline: new SequentialExecutionPlan(
-                new CheckPipeline($registry, new PipelineRunner()),
+                new CheckPipeline(
+                    $registry,
+                    new PipelineRunner(
+                        $policy ?? new IsolateFailuresExecutionPolicy(),
+                    ),
+                ),
             ),
             aggregator: new ResultAggregator(
                 new ScoreAggregator(),
@@ -70,5 +77,10 @@ final class Engine implements AnalyzesContexts, RegistersChecks
     public function count(): int
     {
         return $this->registry->count();
+    }
+
+    public function has(string $id): bool
+    {
+        return $this->registry->has($id);
     }
 }

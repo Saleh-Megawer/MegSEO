@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace MegSEO\DTO;
 
-final readonly class AnalysisResult
+use MegSEO\Contracts\ArrayableResult;
+
+final readonly class AnalysisResult implements ArrayableResult
 {
     /**
      * @param array<int, AnalysisIssue> $issues
@@ -43,5 +45,50 @@ final readonly class AnalysisResult
     public function suggestions(): array
     {
         return $this->suggestions;
+    }
+
+    /** @return array<string, mixed> */
+    public function toArray(): array
+    {
+        return [
+            'score' => [
+                'value' => $this->score->value,
+                'contributors' => $this->score->contributors,
+            ],
+            'issues' => array_map(
+                fn (AnalysisIssue $i): array => [
+                    'message' => $i->message,
+                    'details' => $i->details,
+                    'sourceCheckId' => $i->sourceCheckId,
+                    'confidence' => $i->confidence,
+                ],
+                $this->issues,
+            ),
+            'warnings' => array_map(
+                fn (AnalysisWarning $w): array => [
+                    'message' => $w->message,
+                    'details' => $w->details,
+                    'sourceCheckId' => $w->sourceCheckId,
+                ],
+                $this->warnings,
+            ),
+            'suggestions' => array_map(
+                fn (AnalysisSuggestion $s): array => [
+                    'message' => $s->message,
+                    'details' => $s->details,
+                    'sourceCheckId' => $s->sourceCheckId,
+                    'confidence' => $s->confidence,
+                ],
+                $this->suggestions,
+            ),
+            'failures' => array_map(
+                fn (array $f): array => [
+                    'check' => $f['check']->id,
+                    'error' => $f['error'],
+                ],
+                $this->failures,
+            ),
+            'metadata' => $this->metadata,
+        ];
     }
 }
