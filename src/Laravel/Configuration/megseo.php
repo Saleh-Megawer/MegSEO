@@ -40,4 +40,22 @@ return [
     |
     */
     'check_order' => [],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Title Check Thresholds
+    |--------------------------------------------------------------------------
+    |
+    | Recommended title length ranges and short/long boundary thresholds
+    | used by the Title Check feature. Values are resolved at the Laravel
+    | integration boundary and passed to the framework-agnostic
+    | TitleLengthPolicy via its constructor.
+    |
+    */
+    'title' => [
+        'min_length' => (int) env('MEGSEO_TITLE_MIN_LENGTH', 30),
+        'max_length' => (int) env('MEGSEO_TITLE_MAX_LENGTH', 60),
+        'short_threshold' => (int) env('MEGSEO_TITLE_SHORT_THRESHOLD', 20),
+        'long_threshold' => (int) env('MEGSEO_TITLE_LONG_THRESHOLD', 70),
+    ],
 ];
