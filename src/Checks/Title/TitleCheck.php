@@ -70,14 +70,17 @@ final class TitleCheck implements Check
 
             $separatorRule = new DetectSeparatorOnlyTitle();
             $issue = $separatorRule->evaluate($normalized);
-            if ($issue !== null) {
+            $hasSeparatorIssue = $issue !== null;
+            if ($hasSeparatorIssue) {
                 $issues[] = $issue;
             }
 
-            $lengthRule = new EvaluateTitleLength($this->lengthPolicy);
-            $warning = $lengthRule->evaluate($normalized);
-            if ($warning !== null) {
-                $warnings[] = $warning;
+            if (! $hasSeparatorIssue) {
+                $lengthRule = new EvaluateTitleLength($this->lengthPolicy);
+                $warning = $lengthRule->evaluate($normalized);
+                if ($warning !== null) {
+                    $warnings[] = $warning;
+                }
             }
         }
 
