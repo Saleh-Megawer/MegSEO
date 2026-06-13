@@ -1,0 +1,36 @@
+{
+    "name": "megseo/megseo",
+    "description": "MegSEO Core Analysis Engine - SEO Intelligence Engine for Laravel",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "MegSEO Contributors"
+        }
+    ],
+    "require": {
+        "php": "^8.2"
+    },
+    "require-dev": {
+        "pestphp/pest": "^2.0",
+        "orchestra/testbench": "^8.0 || ^9.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "MegSEO\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "MegSEO\\Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
