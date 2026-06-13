@@ -27,6 +27,7 @@ return [
     */
     'checks' => [
         // MegSEO\Checks\Title\TitleCheck::class,
+        // MegSEO\Checks\MetaDescription\MetaDescriptionCheck::class,
     ],
 
     /*
@@ -57,5 +58,21 @@ return [
         'max_length' => (int) env('MEGSEO_TITLE_MAX_LENGTH', 60),
         'short_threshold' => (int) env('MEGSEO_TITLE_SHORT_THRESHOLD', 20),
         'long_threshold' => (int) env('MEGSEO_TITLE_LONG_THRESHOLD', 70),
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Meta Description Check Thresholds
+    |--------------------------------------------------------------------------
+    |
+    | Recommended meta description length ranges and short/long boundary
+    | thresholds used by the Meta Description Check feature.
+    |
+    */
+    'meta_description' => [
+        'min_length' => (int) env('MEGSEO_META_DESCRIPTION_MIN_LENGTH', 120),
+        'max_length' => (int) env('MEGSEO_META_DESCRIPTION_MAX_LENGTH', 160),
+        'short_threshold' => (int) env('MEGSEO_META_DESCRIPTION_SHORT_THRESHOLD', 80),
+        'long_threshold' => (int) env('MEGSEO_META_DESCRIPTION_LONG_THRESHOLD', 170),
     ],
 ];
