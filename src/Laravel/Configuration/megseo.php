@@ -28,6 +28,7 @@ return [
     'checks' => [
         // MegSEO\Checks\Title\TitleCheck::class,
         // MegSEO\Checks\MetaDescription\MetaDescriptionCheck::class,
+        // MegSEO\Checks\Canonical\CanonicalCheck::class,
     ],
 
     /*
@@ -74,5 +75,16 @@ return [
         'max_length' => (int) env('MEGSEO_META_DESCRIPTION_MAX_LENGTH', 160),
         'short_threshold' => (int) env('MEGSEO_META_DESCRIPTION_SHORT_THRESHOLD', 80),
         'long_threshold' => (int) env('MEGSEO_META_DESCRIPTION_LONG_THRESHOLD', 170),
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Canonical Check Configuration
+    |--------------------------------------------------------------------------
+    */
+    'canonical' => [
+        'strict_mode' => (bool) env('MEGSEO_CANONICAL_STRICT', true),
+        'warn_relative' => (bool) env('MEGSEO_CANONICAL_WARN_RELATIVE', true),
+        'warn_cross_domain' => (bool) env('MEGSEO_CANONICAL_WARN_CROSS_DOMAIN', true),
     ],
 ];
