@@ -29,6 +29,7 @@ return [
         // MegSEO\Checks\Title\TitleCheck::class,
         // MegSEO\Checks\MetaDescription\MetaDescriptionCheck::class,
         // MegSEO\Checks\Canonical\CanonicalCheck::class,
+        // MegSEO\Checks\OpenGraph\OpenGraphCheck::class,
     ],
 
     /*
@@ -86,5 +87,14 @@ return [
         'strict_mode' => (bool) env('MEGSEO_CANONICAL_STRICT', true),
         'warn_relative' => (bool) env('MEGSEO_CANONICAL_WARN_RELATIVE', true),
         'warn_cross_domain' => (bool) env('MEGSEO_CANONICAL_WARN_CROSS_DOMAIN', true),
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Open Graph Check Configuration
+    |--------------------------------------------------------------------------
+    */
+    'open_graph' => [
+        'strict_mode' => (bool) env('MEGSEO_OG_STRICT', true),
     ],
 ];
