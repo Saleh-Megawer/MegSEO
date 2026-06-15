@@ -30,6 +30,7 @@ return [
         // MegSEO\Checks\MetaDescription\MetaDescriptionCheck::class,
         // MegSEO\Checks\Canonical\CanonicalCheck::class,
         // MegSEO\Checks\OpenGraph\OpenGraphCheck::class,
+        // MegSEO\Checks\TwitterCard\TwitterCardCheck::class,
     ],
 
     /*
@@ -96,5 +97,14 @@ return [
     */
     'open_graph' => [
         'strict_mode' => (bool) env('MEGSEO_OG_STRICT', true),
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Twitter Card Check Configuration
+    |--------------------------------------------------------------------------
+    */
+    'twitter_card' => [
+        'strict_mode' => (bool) env('MEGSEO_TWITTER_STRICT', true),
     ],
 ];
