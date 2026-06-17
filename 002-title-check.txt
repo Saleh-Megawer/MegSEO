@@ -1,0 +1,24 @@
+002-title-check
+    US3        ← القادم
+
+003-meta-description-check
+
+004-canonical-check
+
+005-open-graph-check
+
+006-internal-link-check
+
+007-arabic-seo-checks
+
+v1.0.0
+
+
+
+
+
+007-twitter-card-check
+008-hreflang-check
+009-robots-check
+010-schema-check
+011-internal-link-check

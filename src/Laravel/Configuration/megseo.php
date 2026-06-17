@@ -27,10 +27,8 @@ return [
     */
     'checks' => [
         // MegSEO\Checks\Title\TitleCheck::class,
-        // MegSEO\Checks\MetaDescription\MetaDescriptionCheck::class,
-        // MegSEO\Checks\Canonical\CanonicalCheck::class,
-        // MegSEO\Checks\OpenGraph\OpenGraphCheck::class,
-        // MegSEO\Checks\TwitterCard\TwitterCardCheck::class,
+        // ...
+        // MegSEO\Checks\Hreflang\HreflangCheck::class,
     ],
 
     /*
@@ -106,5 +104,14 @@ return [
     */
     'twitter_card' => [
         'strict_mode' => (bool) env('MEGSEO_TWITTER_STRICT', true),
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Hreflang Check Configuration
+    |--------------------------------------------------------------------------
+    */
+    'hreflang' => [
+        'strict_mode' => (bool) env('MEGSEO_HREFLANG_STRICT', true),
     ],
 ];

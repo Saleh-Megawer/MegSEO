@@ -24,10 +24,14 @@ final class PipelineRunner
         $results = [];
 
         foreach ($checks as $check) {
+            $checkContext = $context->hasInputFor($check->ref()->id)
+                ? $context->withSubject($context->inputFor($check->ref()->id))
+                : $context;
+
             try {
-                $results[] = $check->analyze($context);
+                $results[] = $check->analyze($checkContext);
             } catch (\Throwable $error) {
-                $decision = $this->policy->evaluate($error, $check, $context);
+                $decision = $this->policy->evaluate($error, $check, $checkContext);
 
                 if ($decision->recordFailure) {
                     $results[] = [

@@ -18,3 +18,10 @@ Quality:
 - 14 Acceptance Scenarios
 - Deterministic Outputs
 - Arabic & Unicode Support
+
+
+
+ADR-001
+
+Shared AnalysisContext Subject Routing
+Deferred until Beta
